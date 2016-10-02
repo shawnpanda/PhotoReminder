@@ -12,22 +12,18 @@ import {
   Text,
   View
 } from 'react-native';
-import Camera from 'react-native-camera';
+import {Scene, Router} from 'react-native-router-flux';
+import CameraCall from './components/Camera'
+import Home from './components/Home'
 
 class PhotoReminder extends Component {
   render() {
-    return (
-      <View style={styles.container}>
-        <Camera
-          captureTarget={Camera.constants.CaptureTarget.disk}
-          ref={(cam) => {
-            this.camera = cam;
-          }}
-          style={styles.preview}
-          aspect={Camera.constants.Aspect.fill}>
-          <Text style={styles.capture} onPress={this.takePicture.bind(this)}>[CAPTURE]</Text>
-        </Camera>
-      </View>
+    return ( <Router>
+      <Scene key="root">
+        <Scene key="camera" component={CameraCall} initial={true} hideNavBar={true} title="camera"></Scene>
+        <Scene key="Home" component={Home} hideNavBar={true} title="image"></Scene>
+      </Scene>
+      </Router>
     );
   }
 
@@ -62,5 +58,4 @@ const styles = StyleSheet.create({
   }
 });
 
-AppRegistry.registerComponent('PhotoReminder', () => PhotoReminder);
 export default PhotoReminder
