@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 
 
+
 class Home extends Component {
   render() {
     return (
@@ -14,10 +15,7 @@ class Home extends Component {
         <Text>Hello Text</Text>
         <Text>this.props.path is {this.props.path}</Text>
         <Image
-          source={{uri: this.props.path}}
-        />
-        <Image
-          style={{width: 50, height: 50}}
+          style={{width: 250, height: 250}}
           source={{uri: this.props.path}}
         />
       </View>
